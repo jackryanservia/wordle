@@ -94,7 +94,7 @@ export class Wordle extends SmartContract {
     const lastGuess = this.lastGuess.get();
     this.lastGuess.assertEquals(lastGuess);
 
-    // Check green letters
+    // Add green letter hints
     // Iterate thorough every index
     for (let i = 0; i < 5; i++) {
       // Check if the letters at this index match
