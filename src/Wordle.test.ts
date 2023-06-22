@@ -1,7 +1,5 @@
 import { Wordle, Word } from './Wordle';
 import {
-  isReady,
-  shutdown,
   Field,
   Mina,
   PrivateKey,
@@ -19,7 +17,6 @@ describe('Wordle', () => {
     zkApp: Wordle;
 
   beforeAll(async () => {
-    await isReady;
     if (proofsEnabled) Wordle.compile();
   });
 
@@ -30,13 +27,6 @@ describe('Wordle', () => {
     zkAppPrivateKey = PrivateKey.random();
     zkAppAddress = zkAppPrivateKey.toPublicKey();
     zkApp = new Wordle(zkAppAddress);
-  });
-
-  afterAll(() => {
-    // `shutdown()` internally calls `process.exit()` which will exit the running Jest process early.
-    // Specifying a timeout of 0 is a workaround to defer `shutdown()` until Jest is done running all tests.
-    // This should be fixed with https://github.com/MinaProtocol/mina/issues/10943
-    setTimeout(shutdown, 0);
   });
 
   async function localDeploy() {

@@ -62,8 +62,8 @@ export class Wordle extends SmartContract {
 
     // Check that all values are between 1 and 26 (valid letter configuration)
     for (let i = 0; i < 5; i++) {
-      guess.encodedWord[i].assertGte(Field(1));
-      guess.encodedWord[i].assertLte(Field(26));
+      guess.encodedWord[i].assertGreaterThanOrEqual(Field(1));
+      guess.encodedWord[i].assertLessThanOrEqual(Field(26));
     }
 
     // Set lastGuess to new guess
